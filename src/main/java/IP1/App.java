@@ -8,7 +8,7 @@ public class App {
         encoding.userInput();
         System.out.println("Your cipher text is" + "" + encoding.cipher());
 
-        decoding.decyrpt(encoding.getPlaintext());
+        decoding.decrypt(encoding.getPlaintext());
         System.out.println("Your decrypted phrase is: " + encoding.cipher());
     }
 }

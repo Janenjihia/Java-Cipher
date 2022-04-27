@@ -32,10 +32,12 @@ public class Encoding {
             String cipherKey = bufferedReader.readLine();
             this.cipherKey = Integer.parseInt(cipherKey);
             this.setPlaintext(plaintext);
-        } catch (Exception var5) {
-            var5.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        public String cipher(){
+        return "";
+    }
+        public String cipher (){
             String[] alphabets = new String[]{"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
             List<String> myList = new ArrayList(List.of(alphabets));
             this.setPlaintext(this.plaintext);
@@ -63,7 +65,3 @@ public class Encoding {
 
 
 
-
-
-
-}

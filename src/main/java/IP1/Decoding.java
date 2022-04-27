@@ -7,5 +7,5 @@ public class Decoding {public static  Encoding encoding = new Encoding();
         this.plaintext= encoding.getPlaintext();
         System.out.println("Your decrypted phrase is: "+plaintext);
     }
-    return
+//    return this.getPlainText;
 }

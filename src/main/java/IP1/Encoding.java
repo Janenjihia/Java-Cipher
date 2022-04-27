@@ -7,23 +7,28 @@ import java.util.List;
 
 public class Encoding {
 
+//    public int encodeKey(int cipherKey){
+//        if (cipherKey < 0  ){
+//            throw new IllegalArgumentException("Enter encryption key between 0 - 25");
+//        } else if (cipherKey> 25) {
+//            throw new IllegalArgumentException("Enter encryption key between 0 - 25");
+//        } else {
+//            return cipherKey;
+//        }
+//    }
     private String plaintext = "";
-    public Integer cipherKey;
-    public String cipherText = "";
-
-    public Encoding() {
-    }
-
     public void setPlaintext(String plaintext) {
         this.plaintext = plaintext.toUpperCase();
     }
-
     public String getPlaintext() {
         return this.plaintext;
     }
+    public Integer cipherKey;
+    public String cipherText = "";
 
-    public String userInput() {
+    public void userInput() {
         try {
+
             System.out.print("Enter Plaintext: ");
             InputStreamReader streamReader = new InputStreamReader(System.in);
             BufferedReader bufferedReader = new BufferedReader(streamReader);
@@ -32,36 +37,42 @@ public class Encoding {
             String cipherKey = bufferedReader.readLine();
             this.cipherKey = Integer.parseInt(cipherKey);
             this.setPlaintext(plaintext);
+//            return "";
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "";
     }
-        public String cipher (){
-            String[] alphabets = new String[]{"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
-            List<String> myList = new ArrayList(List.of(alphabets));
-            this.setPlaintext(this.plaintext);
 
-            for(int i = 0; i < this.getPlaintext().length(); ++i) {
-                Character myletter = this.getPlaintext().charAt(i);
-                Integer currentIndex = myList.indexOf(myletter.toString());
-                String cipherLetter = "";
-                if (myletter > 'A' && myletter < 'z') {
-                    myletter = (char)(myletter + this.cipherKey);
-                } else if (myletter > 'Z') {
-                    myletter = (char)(myletter + 'A' - 'Z' - 1);
-                    Integer cipherKey = currentIndex + this.cipherKey;
-                    cipherLetter = (String)myList.get(cipherKey);
-                    this.cipherText = this.cipherText + cipherLetter;
-                }
+    public String cipher() {
+        String[] alphabets = {
+                "A", "B", "C", "D", "E", "F", "G",
+                "H", "I", "J", "K", "L", "M", "N",
+                "O", "P", "Q", "R", "S", "T", "U",
+                "V", "W", "X", "Y", "Z"
+        };
+        List<String> myList = new ArrayList<String>(List.of(alphabets));
+        this.setPlaintext(plaintext);
 
-                System.out.println(cipherLetter);
+        for (int i = 0; i < this.getPlaintext().length(); i++) {
+            Character myletter;
+            myletter = this.getPlaintext().charAt(i);
+            Integer currentIndex = myList.indexOf(myletter.toString());
+            String cipherLetter = "";
+            if (myletter > 'A' && myletter < 'z') {
+                myletter = (char) (myletter + cipherKey);
+            } else if (myletter > 'Z') {
+                myletter = (char) (myletter + 'A' - 'Z' - 1);
+//            Integer currentIndex = myList.indexOf(myletter.toString());
+                Integer cipherKey = currentIndex + this.cipherKey;
+                cipherLetter = myList.get(cipherKey);
+                this.cipherText = this.cipherText + "" + cipherLetter;
             }
-
-            return this.cipherText;
+            System.out.println(cipherLetter);
         }
 
+//        System.out.println(this.cipherKey);
+        return this.cipherText;
+
     }
 
-
-
+}
